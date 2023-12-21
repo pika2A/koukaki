@@ -1,0 +1,23 @@
+.section__oscar {
+  font-family: "Quicksand", sans-serif;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.section__oscar p {
+  padding: 41px 67px;
+  width: 643px;
+  height: 220px;
+  background-size: cover;
+  background-image: url(../assets/images/background-oscar.png);
+  background-repeat: no-repeat;
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.section__oscar img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}/*# sourceMappingURL=style.css.map */

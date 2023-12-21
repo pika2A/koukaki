@@ -1,0 +1,13 @@
+@keyframes sunflower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.story h2::after,
+.story__article::after,
+#studio h2::before {
+  animation: sunflower 10s linear infinite;
+}/*# sourceMappingURL=stylechild.css.map */
