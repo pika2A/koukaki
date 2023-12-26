@@ -1,24 +1,90 @@
+@keyframes fade-in-header {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-header-img {
+    0% {
+        transform: translateY(300px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.banner {
+    animation: fade-in-header 2s;
+
+    & img {
+        animation: fade-in-header-img 2s;
+    }
+}
+
+@keyframes sunflower {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.story h2::after,
+.story__article::after,
+#studio h2::before,
+#studio h2::after,
+.section__oscar p::before,
+.site-footer::after {
+    animation: sunflower 10s linear infinite;
+}
+
 .section__oscar {
+    position: relative;
+    padding-top: 5em;
     font-family: "Quicksand", sans-serif;
     width: 100%;
+    margin: auto;
     height: auto;
     display: flex;
     justify-content: center;
 
     & p {
-        padding: 41px 67px;
-        width: 643px;
-        height: 220px;
+        padding: 45px 0 0 86px;
+        width: 758px;
+        height: 274px;
         background-size: cover;
         background-image: url(../assets/images/background-oscar.png);
         background-repeat: no-repeat;
-        color: white;
-        font-size: 32px;
-        font-weight: 700;
+        color: #FFF5E9;
+        font-size: 42px;
+        letter-spacing: -2px;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
     & img {
         object-fit: contain;
     }
+
+    & ::before {
+        content: url(../../foce/assets/images/Sunflower.png);
+        position: absolute;
+        left: 4em;
+        top: 0em;
+    }
+}
+
+.site-footer::before {
+    display: none;
 }
