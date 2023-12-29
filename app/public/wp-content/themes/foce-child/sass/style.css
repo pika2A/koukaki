@@ -1,63 +1,67 @@
+@charset "UTF-8";
+
+/************* ANIMATION BANNER ***************/
 @keyframes fade-in-header {
   0% {
     transform: translateY(-100px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
   }
 }
-@keyframes fade-in-header-img {
+
+@keyframes fade-in-img {
   0% {
     transform: translateY(300px);
     opacity: 0;
   }
+
   100% {
-    transform: translateY(0);
+    transform: translateY(0px);
     opacity: 1;
   }
 }
+
 .banner {
+  position: relative;
+  min-height: 806px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: fade-in-header 2s;
 }
+
 .banner img {
-  animation: fade-in-header-img 2s;
+  z-index: 1;
+  animation: fade-in-img 2s;
 }
 
-@keyframes fade-in-main {
-  0% {
-    transform: translateY(300px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-h2,
-h3,
-h2::after,
-article::after,
-article::before,
-h2::before,
-h2::after,
-figure,
-#place,
-div::before,
-.section__oscar,
-footer {
-  animation: fade-in-main 2s;
+/**************** VIDEO BANNER ************************/
+.banner-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: 0;
 }
 
+/*************** ANIMATION FLOWERS ***************/
 @keyframes sunflower {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 .story h2::after,
 .story__article::after,
 #studio h2::before,
@@ -67,6 +71,45 @@ footer {
   animation: sunflower 10s linear infinite;
 }
 
+/***************** ANIMATION SECTION******************/
+/****** fait avec wyona *************
+@keyframes fade-in-img-absolute {
+    0% {
+        transform: translateX(0);
+        left: 0.7em;
+        top: 300px !important;
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        left: 0.7em;
+        top: 1.8em !important;
+        opacity: 1;
+    }
+}
+
+.story h2::before,
+.story h2::after {
+    animation: fade-in-img-absolute 2s;
+}
+
+/************ fin code wyona******************/
+/*section,*/
+/*fleur de gauche lié directement au h2 sans mettre h2::before et h2::after la fleure de gauche bouge qd meme??*/
+h2,
+h3,
+.story__article::after,
+article::before,
+figure,
+#place,
+div::before,
+.section__oscar,
+footer {
+  animation: fade-in-img 2s;
+}
+
+/**************** SECTION OSCAR ************************/
 .section__oscar {
   position: relative;
   padding-top: 5em;
@@ -77,6 +120,7 @@ footer {
   display: flex;
   justify-content: center;
 }
+
 .section__oscar p {
   padding: 45px 0 0 86px;
   width: 758px;
@@ -89,10 +133,12 @@ footer {
   letter-spacing: -2px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 .section__oscar img {
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
+
 .section__oscar ::before {
   content: url(../../foce/assets/images/Sunflower.png);
   position: absolute;
@@ -102,4 +148,6 @@ footer {
 
 .site-footer::before {
   display: none;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
