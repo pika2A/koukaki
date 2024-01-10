@@ -1,45 +1,51 @@
-@charset "UTF-8";
+.skrollr-destop {
+  height: none;
+}
 
-/************* ANIMATION BANNER ***************/
-@keyframes fade-in-header {
+/*********************** SECTION BANIERE ACCUEIL******************/
+@keyframes fade-in-img {
   0% {
-    transform: translateY(-100px);
+    transform: translateY(-300px);
     opacity: 0;
   }
-
   100% {
     transform: translateY(0);
     opacity: 1;
   }
 }
-
-@keyframes fade-in-img {
+@keyframes float {
   0% {
-    transform: translateY(300px);
-    opacity: 0;
+    transform: translate3d(0px, -10px, 0px);
   }
-
+  25% {
+    transform: translate3d(-20px, 0px, 0px);
+  }
+  50% {
+    transform: translate3d(0px, 10px, 0px);
+  }
+  75% {
+    transform: translate3d(20px, 0px, 0px);
+  }
   100% {
-    transform: translateY(0px);
-    opacity: 1;
+    transform: translate3d(0px, -10px, 0px);
   }
 }
-
 .banner {
   position: relative;
   min-height: 806px;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fade-in-header 2s;
-}
-
-.banner img {
-  z-index: 1;
   animation: fade-in-img 2s;
 }
+.banner img {
+  z-index: 1;
+  position: absolute;
+  height: 479px;
+  width: auto;
+  animation: float 5s cubic-bezier(0.43, 0.08, 0.61, 0.99) infinite, fade-in 2s;
+}
 
-/**************** VIDEO BANNER ************************/
 .banner-video {
   position: absolute;
   top: 0;
@@ -47,66 +53,101 @@
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   z-index: 0;
 }
 
-/*************** ANIMATION FLOWERS ***************/
-@keyframes sunflower {
+/*********************** SECTION HISTOIRE ***********************/
+@keyframes animate-story-left-flower {
   0% {
-    transform: rotate(0deg);
+    top: 9em;
+    opacity: 0;
   }
-
   100% {
-    transform: rotate(360deg);
+    top: 6em;
+    opacity: 1;
   }
 }
-
-.story h2::after,
-.story__article::after,
-#studio h2::before,
-#studio h2::after,
-.section__oscar p::before,
-.site-footer::after {
-  animation: sunflower 10s linear infinite;
+@keyframes animate-story-left-stem {
+  0% {
+    top: 300px;
+    opacity: 0;
+  }
+  100% {
+    top: 1.8em;
+    opacity: 1;
+  }
+}
+@keyframes animate-story-right-flower {
+  0% {
+    top: 450PX;
+    opacity: 0;
+  }
+  100% {
+    top: 5em;
+    opacity: 1;
+  }
+}
+h2::before {
+  animation: animate-story-left-stem 2s;
 }
 
-/***************** ANIMATION SECTION******************/
-/****** fait avec wyona *************
-@keyframes fade-in-img-absolute {
-    0% {
-        transform: translateX(0);
-        left: 0.7em;
-        top: 300px !important;
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0);
-        left: 0.7em;
-        top: 1.8em !important;
-        opacity: 1;
-    }
-}
-
-.story h2::before,
 .story h2::after {
-    animation: fade-in-img-absolute 2s;
+  animation: animate-story-left-flower 2s, rotate-flower 10s linear infinite;
 }
 
-/************ fin code wyona******************/
-/*section,*/
-/*fleur de gauche lié directement au h2 sans mettre h2::before et h2::after la fleure de gauche bouge qd meme??*/
-h2,
-h3,
-.story__article::after,
-article::before,
-figure,
-#place,
-div::before,
-.section__oscar,
-footer {
-  animation: fade-in-img 2s;
+.story__article::before {
+  top: 11em;
+}
+
+.story__article::after {
+  top: 5em;
+  animation: animate-story-right-flower 2s, rotate-flower 10s linear infinite;
+}
+
+/**************** SECTION LE LIEUX *************************/
+@keyframes fade-in-background {
+  0% {
+    background-position: 0 400px;
+    opacity: 0;
+  }
+  100% {
+    background-position: 0;
+    opacity: 1;
+  }
+}
+#place {
+  background-repeat: no-repeat;
+  animation: fade-in-background 2s;
+}
+
+/******************** SECTION STUDIO KOUKAKI ****************/
+@keyframes animate-studio-flower-left {
+  0% {
+    top: 5em;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animate-studio-flower-right {
+  0% {
+    top: 5.2em;
+    opacity: 0;
+  }
+  100% {
+    top: 1.2em;
+    opacity: 1;
+  }
+}
+#studio h2::before {
+  animation: animate-studio-flower-left 2s, rotate-flower 10s linear infinite;
+}
+
+#studio h2::after {
+  animation: animate-studio-flower-right 2s, rotate-flower 10s linear infinite;
 }
 
 /**************** SECTION OSCAR ************************/
@@ -120,8 +161,8 @@ footer {
   display: flex;
   justify-content: center;
 }
-
 .section__oscar p {
+  margin-top: 60px;
   padding: 45px 0 0 86px;
   width: 758px;
   height: 274px;
@@ -129,25 +170,78 @@ footer {
   background-image: url(../assets/images/background-oscar.png);
   background-repeat: no-repeat;
   color: #FFF5E9;
+  text-align: left;
   font-size: 40px;
   letter-spacing: -2px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
 .section__oscar img {
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
+  animation: fade-in 2s;
 }
-
-.section__oscar ::before {
+.section__oscar p::before {
   content: url(../../foce/assets/images/Sunflower.png);
   position: absolute;
   left: 4em;
   top: 0em;
+  animation: animate-studio-flower-left 2s, rotate-flower 10s linear infinite;
 }
 
+/******************* SECTION FOOTER ***********************/
 .site-footer::before {
   display: none;
 }
 
-/*# sourceMappingURL=style.css.map */
+.site-footer::after,
+.site-footer ul::after {
+  animation: rotate-flower 10s linear infinite;
+}
+
+/********************* ANIMATION EFFET FADE-IN ********************/
+@keyframes fade-in {
+  0% {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+article::before,
+figure,
+div::before,
+footer {
+  animation: fade-in 2s;
+}
+
+/*************** ANIMATION DES FLEURS ***************/
+@keyframes rotate-flower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/******************** ANIMATION TITRES **************/
+@keyframes animate-title {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.word-animation {
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.animate-title .word-animation {
+  opacity: 0;
+  animation: animate-title 2s forwards;
+}/*# sourceMappingURL=style.css.map */

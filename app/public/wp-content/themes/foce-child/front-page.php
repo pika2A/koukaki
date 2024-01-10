@@ -8,9 +8,9 @@ get_header();
         <video autoplay loop muted class="banner-video">
             <source src="<?php echo get_theme_file_uri() . '/assets/videos/Studio+Koukaki-vidéo+header+sans+son+(1).mp4'; ?>" type="video/mp4">
         </video>
-        <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants">
+        <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants" data-0="top: 250px;" data-300="top: -100px;">
     </section>
-    <section id="#story" class="story">
+    <section id=" #story" class="story">
         <h2>L'histoire</h2>
         <article id="" class="story__article">
             <p><?php echo get_theme_mod('story'); ?></p>
