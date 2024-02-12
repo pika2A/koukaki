@@ -21,7 +21,7 @@ title.forEach((currentTitle) => {
     span.classList.add("word-animation");
 
     // Ajoutez un délai à l'animation pour chaque mot
-    span.style.animationDelay = `${index * 0.5}s`;
+    span.style.animationDelay = `${index * 0.3}s`;
 
     // Ajoutez l'élément span au titre
     currentTitle.appendChild(span);
@@ -57,6 +57,70 @@ title.forEach((currentTitle) => {
 
 //initialise de skrollr
 var s = skrollr.init();
+console.log(skrollr);
 
 //initialise la hauteur du body en auto
 document.body.style.height = "auto";
+
+const swiper = new Swiper(".swiper-container", {
+  // Optional parameters
+  effect: "coverflow",
+  grabCursor: true,
+  slidesPerView: "auto", // Nombre total de diapositives à afficher (1 principale + 2 adjacentes)
+  centeredSlides: true, // Centrer la diapositive principale
+  spaceBetween: 100, // Espace entre les diapositives
+  loop: true,
+  coverflowEffect: {
+    depth: 200, //Décalage de profondeur en px - défaut 100
+    modifier: 1, //Multiplicateur d'effet - défaut 1
+    rotate: 200, //Rotation du slide en degrés - défaut 50
+    scale: 0.6, //Effet d'échelle de diapositive - défaut 1
+    slideShadows: false, //Active les ombres des diapositives - défaut TRUE
+    stretch: 0, //Étirer l'espace entre les diapositives (en px) -défaut 0
+  },
+  autoplay: {
+    delay: 4000,
+    //reverseDirection: true, //cette ligne pour inverser le sens de l'autoplay
+  },
+});
+
+/* **************** MENU BURGER ******************* */
+// Sélectionne l'élément avec la classe "menu-toggle"
+const menuToggle = document.querySelector(".menu-toggle");
+
+// Sélectionne l'élément avec la classe "menu"
+const menuContainer = document.querySelector(".menu");
+
+// Sélectionne tous les éléments avec la classe "menu-li"
+const menuLinks = document.querySelectorAll(".menu-li");
+
+// Ajoute un gestionnaire d'événements de clic à l'élément "menuToggle"
+menuToggle.addEventListener("click", () => {
+  // Bascule la classe "open" sur l'élément "menuToggle"
+  menuToggle.classList.toggle("open");
+
+  // Bascule la classe "open" sur l'élément "menuContainer"
+  menuContainer.classList.toggle("open");
+
+  // Si l'élément "menuToggle" a la classe "open", ajoute la classe "cross"
+  if (menuToggle.classList.contains("open")) {
+    menuToggle.classList.add("cross");
+  } else {
+    // Sinon, supprime la classe "cross"
+    menuToggle.classList.remove("cross");
+  }
+});
+
+// Pour chaque lien du menu...
+menuLinks.forEach((link) => {
+  // Ajoute un gestionnaire d'événements de clic
+  link.addEventListener("click", () => {
+    // Si le menu est ouvert...
+    if (menuContainer.classList.contains("open")) {
+      // Ferme le menu
+      menuToggle.classList.remove("open");
+      menuContainer.classList.remove("open");
+      menuToggle.classList.remove("cross");
+    }
+  });
+});

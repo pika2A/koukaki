@@ -6,57 +6,31 @@ get_header();
 <main id="primary" class="site-main">
     <section class="banner">
         <video autoplay loop muted class="banner-video">
-            <source src="<?php echo get_theme_file_uri() . '/assets/videos/Studio+Koukaki-vidéo+header+sans+son+(1).mp4'; ?>" type="video/mp4">
+            <source src="<?php echo get_theme_file_uri() . '/assets/videos/video-banner.mp4'; ?>" type="video/mp4">
         </video>
-        <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants" data-0="top: 250px;" data-300="top: -100px;">
+        <img src="<?php echo get_template_directory_uri() . '/assets/images/logo.png'; ?> " alt="logo Fleurs d'oranger & chats errants" data-0="top: 17vw;" data-400="top: -10vw;">
     </section>
     <section id=" #story" class="story">
-        <h2>L'histoire</h2>
-        <article id="" class="story__article">
+        <h2 id="histoire">L'histoire</h2>
+        <article id="story" class="story__article">
             <p><?php echo get_theme_mod('story'); ?></p>
         </article>
-        <?php
-        $args = array(
-            'post_type' => 'characters',
-            'posts_per_page' => -1,
-            'meta_key'  => '_main_char_field',
-            'orderby'   => 'meta_value_num',
 
-        );
-        $characters_query = new WP_Query($args);
+        <?php
+        //section personnages deplacés dans un template part pour integration de l'animation de carrousel avec le script swiper.js
+        get_template_part('template-part/personnages');
         ?>
-        <article id="characters">
-            <div class="main-character">
-                <h3>Les personnages</h3>
-                <?php
-                $main_character = $characters_query->posts[0];
-                echo '<figure>';
-                echo get_the_post_thumbnail($main_character->ID, 'full');
-                echo '<figcaption>' . $main_character->post_title . '</figcaption>';
-                echo '</figure>';
-                $characters_query->next_post();
-                ?>
-            </div>
-            <div class="other-characters">
-                <?php
-                while ($characters_query->have_posts()) {
-                    $characters_query->the_post();
-                    echo '<figure>';
-                    echo get_the_post_thumbnail(get_the_ID(), 'full');
-                    echo '<figcaption>';
-                    the_title();
-                    echo '</figcaption>';
-                    echo '</figure>';
-                }
-                ?>
-            </div>
-        </article>
+
         <article id="place">
+            <div class="clouds">
+                <!-- integration des nuages pour animation-->
+                <img class="big-cloud" src="<?php echo get_theme_file_uri() . '/assets/images/big_cloud.png'; ?>" alt="Gros nuage" data-bottom-top="transform:translateX(0vw)" data-top-bottom="transform:translateX(-15.63vw)">
+                <img class="little-cloud" src="<?php echo get_theme_file_uri() . '/assets/images/little_cloud.png'; ?>" alt="Petit nuage" data-bottom-top="transform:translateX(0vw)" data-top-bottom="transform:translateX(-15.63vw)">
+            </div>
             <div>
                 <h3>Le Lieu</h3>
                 <p><?php echo get_theme_mod('place'); ?></p>
             </div>
-
         </article>
     </section>
 
@@ -70,6 +44,7 @@ get_header();
     </section>
 
     <?php
+    // integration de la section oscar mis dans un template part
     get_template_part('template-part/oscar');
     ?>
 

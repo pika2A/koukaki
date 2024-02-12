@@ -1,0 +1,122 @@
+/*********************** SECTION BANIERE ACCUEIL******************/
+@keyframes fade-in-img {
+  0% {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes float {
+  0% {
+    transform: translate3d(0px, -10px, 0px);
+  }
+  25% {
+    transform: translate3d(-20px, 0px, 0px);
+  }
+  50% {
+    transform: translate3d(0px, 10px, 0px);
+  }
+  75% {
+    transform: translate3d(20px, 0px, 0px);
+  }
+  100% {
+    transform: translate3d(0px, -10px, 0px);
+  }
+}
+/*********************** SECTION HISTOIRE ***********************/
+@keyframes animate-story-left-flower {
+  0% {
+    top: 9em;
+    opacity: 0;
+  }
+  100% {
+    top: 6em;
+    opacity: 1;
+  }
+}
+@keyframes animate-story-left-stem {
+  0% {
+    top: 300px;
+    opacity: 0;
+  }
+  100% {
+    top: 1.8em;
+    opacity: 1;
+  }
+}
+@keyframes animate-story-right-flower {
+  0% {
+    top: 450PX;
+    opacity: 0;
+  }
+  100% {
+    top: 5em;
+    opacity: 1;
+  }
+}
+/**************** SECTION LE LIEUX *************************/
+@keyframes fade-in-background {
+  0% {
+    background-position: 0 400px;
+    opacity: 0;
+  }
+  100% {
+    background-position: 0;
+    opacity: 1;
+  }
+}
+/******************** SECTION STUDIO KOUKAKI ****************/
+@keyframes animate-studio-flower-left {
+  0% {
+    top: 5em;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animate-studio-flower-right {
+  0% {
+    top: 5.2em;
+    opacity: 0;
+  }
+  100% {
+    top: 1.2em;
+    opacity: 1;
+  }
+}
+/********************* ANIMATION EFFET FADE-IN ********************/
+@keyframes fade-in {
+  0% {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+/*************** ANIMATION DES FLEURS ***************/
+@keyframes rotate-flower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/******************** ANIMATION TITRES **************/
+@keyframes animate-title {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}/*# sourceMappingURL=animations.css.map */

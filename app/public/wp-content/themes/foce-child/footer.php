@@ -13,16 +13,16 @@
 ?>
 
 <footer id="colophon" class="site-footer">
-    <ul>
+    <ul id="footer">
         <li><a href="#">Mentions Légales</a></li>
         <li><a href="#">STUDIO KOUKAKI</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 </footer><!-- #colophon -->
 </div><!-- #page -->
+</body>
 
 <?php wp_footer(); ?>
 
-</body>
 
 </html>

@@ -10,17 +10,27 @@ function theme_enqueue_styles()
 
     // Charge le fichier style.css du thème enfant.
     wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/sass/style.css', array());
+
+    // charger le CSS de SwiperJS
+    wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
 }
 
 // Ajoute une action pour charger les scripts de mon thème
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
-//fonction pour charger les scripts de mon thème.
+// Fonction pour charger les scripts de mon thème.
 function theme_enqueue_scripts()
 {
-    // Charge le fichier script.js de mon thème et indique qu'il dépend de skrollr.
-    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/script.js', array('skrollr'), '1.0.0', true);
+    // Charge le fichier script SwiperJS depuis le CDN
+    wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), false, true);
+
+    // Charge le fichier skrollr.min.js de mon thème.
+    wp_enqueue_script('skrollr', get_stylesheet_directory_uri() . '/js/skrollr.min.js', array(), false, true);
+
+    // Charge le fichier script.js de mon thème et indique qu'il dépend de skrollr et swiper.
+    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/script.js', array('skrollr', 'swiper'), '1.0.0', true);
 }
+
 
 // Vérifie si le thème actif est un thème enfant.
 if (get_stylesheet() !== get_template()) {
@@ -35,13 +45,3 @@ if (get_stylesheet() !== get_template()) {
         return get_option('theme_mods_' . get_template(), $default);
     });
 }
-
-//fonction pour charger Skrollr.
-function ajouter_skrollr()
-{
-    // Charge le fichier skrollr.min.js de mon thème.
-    wp_enqueue_script('skrollr', get_stylesheet_directory_uri() . '/js/skrollr.min.js', array(), false, true);
-}
-
-//action pour charger Skrollr
-add_action('wp_enqueue_scripts', 'ajouter_skrollr');

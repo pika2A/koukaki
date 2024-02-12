@@ -1,7 +1,3 @@
-.skrollr-destop {
-  height: none;
-}
-
 /*********************** SECTION BANIERE ACCUEIL******************/
 @keyframes fade-in-img {
   0% {
@@ -30,33 +26,6 @@
     transform: translate3d(0px, -10px, 0px);
   }
 }
-.banner {
-  position: relative;
-  min-height: 806px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fade-in-img 2s;
-}
-.banner img {
-  z-index: 1;
-  position: absolute;
-  height: 479px;
-  width: auto;
-  animation: float 5s cubic-bezier(0.43, 0.08, 0.61, 0.99) infinite, fade-in 2s;
-}
-
-.banner-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  z-index: 0;
-}
-
 /*********************** SECTION HISTOIRE ***********************/
 @keyframes animate-story-left-flower {
   0% {
@@ -88,23 +57,6 @@
     opacity: 1;
   }
 }
-h2::before {
-  animation: animate-story-left-stem 2s;
-}
-
-.story h2::after {
-  animation: animate-story-left-flower 2s, rotate-flower 10s linear infinite;
-}
-
-.story__article::before {
-  top: 11em;
-}
-
-.story__article::after {
-  top: 5em;
-  animation: animate-story-right-flower 2s, rotate-flower 10s linear infinite;
-}
-
 /**************** SECTION LE LIEUX *************************/
 @keyframes fade-in-background {
   0% {
@@ -116,11 +68,6 @@ h2::before {
     opacity: 1;
   }
 }
-#place {
-  background-repeat: no-repeat;
-  animation: fade-in-background 2s;
-}
-
 /******************** SECTION STUDIO KOUKAKI ****************/
 @keyframes animate-studio-flower-left {
   0% {
@@ -142,6 +89,178 @@ h2::before {
     opacity: 1;
   }
 }
+/********************* ANIMATION EFFET FADE-IN ********************/
+@keyframes fade-in {
+  0% {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+/*************** ANIMATION DES FLEURS ***************/
+@keyframes rotate-flower {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/******************** ANIMATION TITRES **************/
+@keyframes animate-title {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+body {
+  height: auto;
+}
+
+/*********************** SECTION BANIERE ACCUEIL******************/
+.banner {
+  position: relative;
+  min-height: 59vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade-in-img 2s;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.banner img {
+  z-index: 1;
+  position: absolute;
+  animation: float 5s cubic-bezier(0.43, 0.08, 0.61, 0.99) infinite, fade-in 2s;
+}
+@media screen and (max-width: 1100) {
+  .banner img {
+    top: 18vw !important;
+  }
+}
+
+.banner-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media screen and (max-width: 575px) {
+  .banner-video {
+    display: none;
+  }
+}
+
+/*********************** SECTION HISTOIRE ***********************/
+section.story {
+  overflow: hidden;
+}
+
+h2::before {
+  animation: animate-story-left-stem 2s;
+}
+
+.story h2::after {
+  animation: animate-story-left-flower 2s, rotate-flower 10s linear infinite;
+}
+
+.story__article::before {
+  top: 11.6em;
+  z-index: 1;
+}
+
+.story__article::after {
+  z-index: 2;
+  top: 5em;
+  animation: animate-story-right-flower 2s, rotate-flower 10s linear infinite;
+}
+
+/* *************** SECTION PERSONNAGES ************************ */
+figure img {
+  padding-top: 50px;
+  max-width: none;
+}
+@media screen and (max-width: 1100px) {
+  figure img {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 700px) {
+  figure img {
+    width: 200px;
+  }
+}
+
+/**************** SECTION LE LIEUX *************************/
+.story #place {
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-image: url("../assets/images/Studio_Koukaki-image_place.png") !important;
+  background-repeat: no-repeat;
+  animation: fade-in-background 2s;
+}
+@media screen and (max-width: 920px) {
+  .story #place > div {
+    margin: 0;
+  }
+}
+.story #place .clouds {
+  position: relative;
+  max-width: none;
+  align-items: end;
+  filter: blur(10px);
+}
+
+.big-cloud {
+  top: -25px;
+  right: 50px;
+  position: absolute;
+}
+@media screen and (max-width: 920px) {
+  .big-cloud {
+    right: -170px;
+  }
+}
+
+.little-cloud {
+  right: 400px;
+  top: 80px;
+  position: absolute;
+}
+@media screen and (max-width: 920px) {
+  .little-cloud {
+    right: 160px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .big-cloud,
+  .little-cloud {
+    display: none;
+  }
+}
+/******************** SECTION STUDIO KOUKAKI ****************/
+#studio {
+  overflow: hidden;
+}
+@media screen and (max-width: 700px) {
+  #studio h2 {
+    font-size: 2.2em;
+  }
+}
+
 #studio h2::before {
   animation: animate-studio-flower-left 2s, rotate-flower 10s linear infinite;
 }
@@ -188,6 +307,37 @@ h2::before {
   animation: animate-studio-flower-left 2s, rotate-flower 10s linear infinite;
 }
 
+@media screen and (max-width: 1100px) {
+  .nomination_oscar {
+    padding-bottom: 10%;
+    width: 80%;
+    margin: auto;
+  }
+  .section__oscar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .section__oscar p {
+    width: 575px;
+    background-size: contain;
+    font-size: 32px;
+    padding: 32px 0 0 66px;
+  }
+}
+@media screen and (max-width: 1100px) and (max-width: 575px) {
+  .section__oscar p {
+    width: 375px;
+    font-size: 23px;
+    padding: 18px 0px 0px 42px;
+    height: 151px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .section__oscar img {
+    width: 45%;
+    font-size: 32px;
+  }
+}
 /******************* SECTION FOOTER ***********************/
 .site-footer::before {
   display: none;
@@ -199,49 +349,205 @@ h2::before {
 }
 
 /********************* ANIMATION EFFET FADE-IN ********************/
-@keyframes fade-in {
-  0% {
-    transform: translateY(400px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
 article::before,
-figure,
 div::before,
+.clouds,
 footer {
   animation: fade-in 2s;
 }
 
-/*************** ANIMATION DES FLEURS ***************/
-@keyframes rotate-flower {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 /******************** ANIMATION TITRES **************/
-@keyframes animate-title {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 .word-animation {
+  position: relative;
   opacity: 0;
   transition: all 0.3s;
 }
 
 .animate-title .word-animation {
   opacity: 0;
+  animation: animate-title 1s forwards;
+}
+
+/* *************************** MENU BURGER ********************** */
+#masthead {
+  overflow: hidden;
+}
+
+.menu-toggle {
+  display: block;
+}
+
+.main-navigation.toggled ul {
+  display: flex;
+}
+
+#site-navigation {
+  height: auto;
+}
+#site-navigation div {
+  display: flex;
+  padding: 1em 0;
+  align-items: center;
+}
+#site-navigation div .site-title {
+  width: 100%;
+  text-align: center;
+  padding-left: 21%;
+}
+#site-navigation div .menu-toggle {
+  width: 30%;
+}
+@media screen and (min-width: 700px) {
+  #site-navigation div .main-navigation {
+    height: auto;
+  }
+  #site-navigation div ul {
+    display: block;
+  }
+}
+#site-navigation .menu {
+  padding: 0;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 2s ease;
+}
+#site-navigation .menu.open {
+  height: 90vh;
+}
+#site-navigation .menu > img {
+  animation: rotate-flower linear 15s infinite;
+}
+#site-navigation .menu .orchid {
+  position: absolute;
+  left: -56px;
+  bottom: 75%;
+}
+#site-navigation .menu .Sunflower {
+  position: absolute;
+  right: 12em;
+  bottom: 70%;
+}
+@media screen and (max-width: 700px) {
+  #site-navigation .menu .Sunflower {
+    right: 3em;
+  }
+}
+@media screen and (max-width: 500px) {
+  #site-navigation .menu .Sunflower {
+    display: none;
+  }
+}
+#site-navigation .menu .flower {
+  position: absolute;
+  left: 8em;
+  bottom: 42%;
+  scale: 0.6;
+}
+@media screen and (max-width: 700px) {
+  #site-navigation .menu .flower {
+    left: 2em;
+  }
+}
+@media screen and (max-width: 500px) {
+  #site-navigation .menu .flower {
+    display: none;
+  }
+}
+#site-navigation .menu .random_flower {
+  position: absolute;
+  scale: 0.4;
+  right: -6.5em;
+  bottom: 50%;
+}
+#site-navigation .menu .hibiscus {
+  position: absolute;
+  bottom: -6em;
+  right: -6em;
+  scale: 1.8;
+}
+#site-navigation .menu img.float {
+  animation: float 5s cubic-bezier(0.43, 0.08, 0.61, 0.99) infinite;
+}
+#site-navigation .menu .cat_purple {
+  position: absolute;
+  left: 200px;
+  bottom: 65%;
+  scale: 0.8;
+}
+@media screen and (max-width: 900px) {
+  #site-navigation .menu .cat_purple {
+    display: none;
+  }
+}
+#site-navigation .menu .cat_orang {
+  position: absolute;
+  bottom: 75px;
+  left: 55px;
+  scale: 0.9;
+}
+#site-navigation .menu .cat_black {
+  position: absolute;
+  bottom: 38%;
+  right: 145px;
+  scale: 0.9;
+}
+@media screen and (max-width: 700px) {
+  #site-navigation .menu .cat_black {
+    display: none;
+  }
+}
+#site-navigation li {
+  font-size: 4em;
   animation: animate-title 2s forwards;
+}
+#site-navigation li a:hover {
+  text-shadow: 0px 2px 12px #FF5C00;
+  color: #000;
+}
+#site-navigation p {
+  padding: 9em 5em 1em 5em;
+  position: relative;
+  z-index: 1;
+}
+#site-navigation p :hover {
+  text-shadow: 0px 2px 4px #FF5C00;
+  color: #000;
+}
+
+#site-navigation .toggled {
+  text-align: center;
+}
+
+.main-navigation .menu {
+  display: flex;
+  flex-direction: column;
+  background: #FFF5E9;
+}
+.main-navigation .menu ul {
+  z-index: 2;
+  flex-direction: column;
+  gap: 20px;
+  height: auto;
+}
+
+.menu-toggle.cross .line:nth-child(1) {
+  transform: rotate(-45deg) translate(1px, 6px);
+}
+
+.menu-toggle.cross .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.cross .line:nth-child(3) {
+  transform: rotate(45deg) translate(-1px, -8px);
+}
+
+@media screen and (max-width: 700px) {
+  #site-navigation p {
+    padding-top: 4em;
+  }
+  #site-navigation li {
+    font-size: 3em;
+  }
 }/*# sourceMappingURL=style.css.map */
